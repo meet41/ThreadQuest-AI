@@ -10,8 +10,15 @@ export default function Footer() {
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
               <div className="relative rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-cyan-500/20 p-6">
                 <p className="text-slate-700 dark:text-cyan-300 text-base leading-relaxed">
-                  An intelligent QA search engine powered by advanced NLP, designed to discover and analyze topics from communication threads.
+                  An intelligent QA search engine powered by Python ML models (Top2Vec, RoBERTa, DistilBERT, ELECTRA hybrid ensembles) and modern full-stack web technologies.
                 </p>
+                <div className="flex flex-wrap gap-1.5 mt-4">
+                  {['Python', 'PyTorch', 'Transformers', 'Top2Vec', 'React 18', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Express', 'SQLite'].map((t, i) => (
+                    <span key={i} className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20">
+                      {t}
+                    </span>
+                  ))}
+                </div>
                 <div className="text-slate-500 dark:text-cyan-400/70 text-sm mt-6 border-t border-slate-200 dark:border-cyan-500/10 pt-4">© 2025 ThreadQuest AI. All rights reserved.</div>
               </div>
             </div>
@@ -36,10 +43,6 @@ export default function Footer() {
             <div className="grid grid-cols-1 gap-4">
               {([
                 { name: 'Meet Patel', id: 'ET23BIT816', role: 'Leader' },
-                { name: 'Hina Padsala', id: 'ET23BIT815', role: 'Developer' },
-                { name: 'Hetvi Lad', id: 'ET23BIT814', role: 'Developer' },
-                { name: 'Vaishnavi Patel', id: 'ET23BIT817', role: 'Developer' },
-                { name: 'Vidhi Patel', id: 'ET22BIT105', role: 'Developer' },
               ] as const).map((m, idx) => (
                 <div key={idx} className="relative group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>

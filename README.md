@@ -1,4 +1,29 @@
-# Project-I : ThreadQuest
+# Project-I : ThreadQuest AI
+
+An end-to-end intelligent Question-Answering search engine and Topic Discovery platform powered by Python Machine Learning models (Top2Vec, RoBERTa, DistilBERT, ELECTRA, and Hybrid Transformer Ensembles) integrated with a modern React + TypeScript + Node.js web application.
+
+---
+
+## 👥 Project Team & Mentorship
+
+### Project Mentor
+- **Prof. Dr. Mitali Desai** — *Project Mentor & Research Guide*
+
+### Core Development Team
+| Name | Roll / Student ID | Role | Key Focus |
+| :--- | :--- | :--- | :--- |
+| **Meet Patel** | `ET23BIT816` | **Project Leader** | ML Architecture, Hybrid Transformer Modeling, Lead Development |
+
+---
+
+## 🛠️ Complete Tech Stack
+- **Python Machine Learning & NLP:** PyTorch, Hugging Face Transformers, Sentence-Transformers, Top2Vec, BERTopic, LDA, NMF, Scikit-learn, Imbalanced-learn, Pandas, NumPy, NLTK
+- **Transformer Architectures:** RoBERTa, DistilBERT, Classical BERT, ALBERT, MobileBERT, ELECTRA, and Hybrid Ensembles (99% Accuracy/F1)
+- **Frontend Web Application:** React 18, TypeScript, Vite, Tailwind CSS (dark/light themes), Fuse.js, PapaParse
+- **Backend & Authentication:** Node.js, Express REST API, SQLite (`better-sqlite3`), JWT, bcryptjs
+
+---
+
 ## Structure:
 - [Github Repo Tree Visualize](https://readmecodegen.vercel.app/file-tree/file-tree-generator/github-file-tree-visualizer)
 ```
@@ -38,6 +63,13 @@ Project-I/
 │   ├── bert-variants.ipynb
 │   ├── model-comparison.md
 │   └── top2vec-Approach2.ipynb
+├── apps/
+│   └── threadquest-qa-search/
+│       ├── public/data/ (Complete_QueryResults_with_scores.csv)
+│       ├── server/ (Node.js + Express + SQLite API)
+│       ├── src/ (React + TypeScript + Tailwind UI)
+│       ├── Top2Vec_Ans_Score.ipynb
+│       └── README.md
 ├── Project Models List.md
 ├── README.md
 └── topic_modeling_models_with_metrics.md

@@ -1,13 +1,35 @@
-# Project workflow and architecture diagrams
+# Project Workflow and Architecture Diagrams
 
-This document illustrates the end-to-end workflow for the app, including the frontend, backend, authentication, dataset search, and theming.
+This document illustrates the end-to-end architecture for ThreadQuest AI, bridging the **Python Machine Learning & NLP Modeling Pipeline** with the **Full-Stack Web Application** (React, TypeScript, Tailwind CSS, Node/Express, and SQLite).
 
-## System architecture
+---
+
+## 👥 Project Team & Mentorship
+- **Project Mentor:** Prof. Dr. Mitali Desai
+- **Core Team:**
+  - Meet Patel (`ET23BIT816`) - Leader (ML Architecture, Hybrid Models & Lead Development)
+
+---
+
+## End-to-End System Architecture
 
 ```mermaid
 flowchart LR
-  subgraph Client [Browser]
-    UI[React + TypeScript + Tailwind]
+  subgraph ML [Python ML & NLP Pipeline]
+    RAW[(StackExchange Datasets)]
+    PREP[10-Stage NLP Cleaning]
+    MODELS[Top2Vec & Transformer Ensembles<br/>RoBERTa, DistilBERT, ELECTRA]
+    SCORE[Cosine Similarity Scoring Engine]
+    RAW --> PREP --> MODELS --> SCORE
+  end
+
+  subgraph Data [Dataset Artifacts]
+    CSV[(public/data/*.csv)]
+  end
+
+  subgraph Client [Browser Client]
+    UI[React 18 + TypeScript + Tailwind]
+    FUSE[Fuse.js Fuzzy Search Index]
   end
 
   subgraph DevServer [Vite Dev Server / Static Build]
@@ -19,25 +41,23 @@ flowchart LR
     DB(("SQLite DB<br/>server/data/app.db"))
   end
 
-  subgraph Data [Static Dataset]
-    CSV[(public/data/*.csv)]
-  end
-
+  SCORE --> CSV
   Client <--> VITE
   VITE --> UI
+  CSV -- "PapaParse (client)" --> UI
+  UI --> FUSE
 
   UI -- "/api/* (proxy in dev)" --> API
   API --> DB
 
-  UI -- "Load CSV (PapaParse)" --> CSV
-
   classDef group fill:#0b1224,stroke:#3dd1ff,stroke-width:1px,stroke-dasharray: 3 3,color:#c8f1ff;
-  class Client,DevServer,Backend,Data group;
+  class ML,Data,Client,DevServer,Backend group;
 ```
 
 Notes
-- In development, Vite proxies requests from `/api/*` to the Express server (e.g., http://localhost:3001).
-- In production, the React app is built as static files; the API runs separately.
+- **Python ML Pipeline:** Executes offline or in Colab/GPU environments to train topic clusters, fine-tune transformer models, and compute question-to-answer semantic relevance scores.
+- **Web Application:** Consumes the precomputed CSV artifacts for sub-millisecond retrieval without requiring GPU infrastructure at query runtime.
+- **Backend API:** Provides secure authentication and user state via Node.js, Express, JWT, and SQLite.
 
 ## Authentication flow
 
